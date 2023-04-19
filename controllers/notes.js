@@ -41,7 +41,7 @@ router.put("/:id", auth, async (req, res) => {
 router.delete("/:id", auth, async (req, res) => {
   try {
     const { id } = req.params;
-    res.status(200).json(await Note.findByIdAndDelete(id));
+    res.status(200).json(await Note.findByIdAndRemove(id));
   } catch (error) {
     res.status(400).json({ error });
   }
