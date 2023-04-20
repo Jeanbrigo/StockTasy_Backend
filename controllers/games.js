@@ -25,6 +25,18 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
+// Show
+router.get("/:id", auth, async (req, res) => {
+  try {
+    const { username } = req.payload;
+    req.body.username = username
+    const { id } = req.params;
+    res.status(200).json(await Game.findById(id));
+  } catch (error) {
+    res.status(400).json({ error });
+  }
+});
+
 // Update
 // router.put("/:id", auth, async (req, res) => {
 //   try {
